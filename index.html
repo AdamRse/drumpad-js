@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+    <h1>DRUM PAD</h1>
+    <div class="pad">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+
+        <div data-key="90" class="key">
+            <kbd>Z</kbd>
+            <span class="sound">hihat</span>
+        </div>
+
+        <div data-key="69" class="key">
+            <kbd>E</kbd>
+            <span class="sound">kick</span>
+        </div>
+
+        <div data-key="81" class="key">
+            <kbd>Q</kbd>
+            <span class="sound">openhat</span>
+        </div>
+
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">boom</span>
+        </div>
+
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">ride</span>
+        </div>
+
+        <div data-key="87" class="key">
+            <kbd>W</kbd>
+            <span class="sound">sanre</span>
+        </div>
+
+        <div data-key="88" class="key">
+            <kbd>X</kbd>
+            <span class="sound">tom</span>
+        </div>
+
+        <div data-key="67" class="key">
+            <kbd>C</kbd>
+            <span class="sound">tink</span>
+        </div>
+        <!-- Générer les 8 boxes restantes correspondant aux fichiers audio à jouer -->
+    </div>
+    <!-- Audio source -->
+    <audio data-key="65" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/clap.wav"></audio>
+    <audio data-key="90" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/hihat.wav"></audio>
+    <audio data-key="69" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/kick.wav"></audio>
+    <audio data-key="81" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/openhat.wav"></audio>
+    <audio data-key="83" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/boom.wav"></audio>
+    <audio data-key="68" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/ride.wav"></audio>
+    <audio data-key="87" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/snare.wav"></audio>
+    <audio data-key="88" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tom.wav"></audio>
+    <audio data-key="67" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1159990/tink.wav"></audio>
+    <script src="./js.js"></script>
+</body>
+
+</html>
