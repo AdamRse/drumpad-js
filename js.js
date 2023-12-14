@@ -81,6 +81,8 @@ melodie1 = [
     ["z", 200],
     ["z", 200],["q", 0],
 ];
+
+
 function beatBox(){
     simulateKey(melodie1[0][0], 200).then(() => {
         if(melodie1.length != 0){
@@ -89,8 +91,6 @@ function beatBox(){
 
     });
 }
-
-
 function simulateKey(key, duree = 200){
     return new Promise((resolve) => {
         const event = new KeyboardEvent('keydown', { key });
@@ -109,3 +109,31 @@ function simulateKey(key, duree = 200){
 document.querySelector("button").addEventListener("click", function(){
     beatBox();
 })
+
+
+
+//METHODE 2
+// let btn = document.querySelector('button');
+// btn.addEventListener('click',  function(){
+//       if(play) 
+//         beatBox();
+// })
+
+// async function beatBox(){
+//     play = false
+//     function simulateKeyy(key){
+//         let ev = new KeyboardEvent('keydown', {key})
+//         document.dispatchEvent(ev)
+//         let ev1 = new KeyboardEvent('keyup', {key});
+//         setTimeout(() => {
+//             document.dispatchEvent(ev1)
+//         }, 500);
+//     }
+//     function playBeat(key){
+//         return new Promise( (resolve) => {
+//             setTimeout(() => {
+//                 resolve(simulateKeyy(key))
+//             }, 1000);
+//         })
+//     }
+// }
