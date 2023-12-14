@@ -63,6 +63,8 @@ touches.forEach(function(touche){
         })
     })
 })
+
+//PARTIE 2
 melodie1 = [
     ["z", 200],
     ["z", 200],["w", 0],
@@ -81,8 +83,6 @@ melodie1 = [
     ["z", 200],
     ["z", 200],["q", 0],
 ];
-
-
 function beatBox(){
     simulateKey(melodie1[0][0], 200).then(() => {
         if(melodie1.length != 0){
@@ -95,12 +95,11 @@ function simulateKey(key, duree = 200){
     return new Promise((resolve) => {
         const event = new KeyboardEvent('keydown', { key });
         document.dispatchEvent(event);
-         console.log("keydown");
          melodie1.shift();
+
         setTimeout(() => {
             const keyUpEvent = new KeyboardEvent('keyup', { key });
             document.dispatchEvent(keyUpEvent);
-
             resolve();
         }, duree);
     });
@@ -112,7 +111,7 @@ document.querySelector("button").addEventListener("click", function(){
 
 
 
-//METHODE 2
+//PARTIE 2 METHODE 2
 // let btn = document.querySelector('button');
 // btn.addEventListener('click',  function(){
 //       if(play) 
