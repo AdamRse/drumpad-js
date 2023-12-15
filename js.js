@@ -17,6 +17,15 @@ document.addEventListener("keydown", function(e){
     if(e.key == "&"){
         beatBox();
     }
+    // else if(e.key == "é"){
+    //     beatBox(1);
+    // }
+    // else if(e.key == "\""){
+    //     beatBox(2);
+    // }
+    // else{
+    //     beatBox(3);
+    // }
     
 })
 document.addEventListener("keyup", function(e){
@@ -65,43 +74,77 @@ touches.forEach(function(touche){
 })
 
 //PARTIE 2
-melodie1 = [
-    ["z", 200],
-    ["z", 200],["w", 0],
-    ["z", 200],
-    ["z", 200],["q", 0],
-    ["z", 200],
-    ["z", 200],["w", 0],
-    ["z", 200],
-    ["z", 200],["q", 0],
-    ["z", 200],
-    ["z", 200],["w", 0],
-    ["z", 200],
-    ["z", 200],["q", 0],
-    ["z", 200],
-    ["z", 200],["w", 0],
-    ["z", 200],
-    ["z", 200],["q", 0],
-];
-function beatBox(){
-    simulateKey(melodie1[0][0], 200).then(() => {
-        if(melodie1.length != 0){
-            setTimeout(function(){ beatBox(); }, melodie1[0][1]);
-        }
 
+function rand(min, max){
+    return Math.floor(Math.random() * (++max - min) + min);
+}
+let selectMelodie = 3;//0 à 3
+let melodies = [];
+resetMelody();
+function resetMelody(){
+    let melodie1 = [];//serpentin sonore
+    let melodie2 = [];//we will rock you
+    let melodie3 = [];//random
+    let melodie0 = [
+        ["z", 500],
+        ["z", 0],["w", 500],
+        ["z", 500],
+        ["z", 0],["q", 500],
+        ["z", 500],
+        ["z", 0],["w", 500],
+        ["z", 500],
+        ["z", 0],["q", 500],
+        ["z", 500],
+        ["z", 0],["w", 500],
+        ["z", 500],
+        ["z", 0],["q", 500],
+        ["z", 500],
+        ["z", 0],["w", 500],
+        ["z", 500],
+        ["z", 0],["q", 500],
+    ];
+    for(let i = 0; i<10; i++){
+        melodie1.push(["a", 0],["z", 0],["e", 0],["q", 0],["s", 0],["d", 0],["w", 0],["x", 0],["c", 0])
+    }
+    for(let i = 0; i<10; i++){
+        melodie2.push(["e", 780],["e", 390],["a", 390])
+    }
+    let keys = ["a","z","e","q","s","d","w","x","c"];
+    let rdm = rand(10, 50)
+    for(let i = 0; i<rdm; i++){
+        melodie3.push([keys[rand(0, 8)], rand(0, 1000)]);
+    }
+    melodies=[melodie0, melodie1, melodie2, melodie3];
+}
+
+function beatBox(n = false){
+    console.log(n);
+    // if(n !== false){
+    //     selectMelodie = n;
+    // }
+    simulateKey(melodies[selectMelodie][0][0], 100).then(() => {
+        if(melodies[selectMelodie].length != 0){
+            setTimeout(function(){ beatBox(); }, melodies[selectMelodie][0][1]);
+        }
+        else{
+            resetMelody();
+        }
     });
 }
 function simulateKey(key, duree = 200){
     return new Promise((resolve) => {
         const event = new KeyboardEvent('keydown', { key });
         document.dispatchEvent(event);
-         melodie1.shift();
+        melodies[selectMelodie].shift();
 
-        setTimeout(() => {
-            const keyUpEvent = new KeyboardEvent('keyup', { key });
-            document.dispatchEvent(keyUpEvent);
-            resolve();
-        }, duree);
+        const keyUpEvent = new KeyboardEvent('keyup', { key });
+        document.dispatchEvent(keyUpEvent);
+        resolve();
+        // setTimeout(() => {
+        //     const keyUpEvent = new KeyboardEvent('keyup', { key });
+        //     document.dispatchEvent(keyUpEvent);
+        //     resolve();
+        // }, duree);
     });
 }
 
